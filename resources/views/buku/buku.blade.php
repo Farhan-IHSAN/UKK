@@ -18,6 +18,7 @@
                             <thead>
                                 <tr>
                                    
+                                    <th>Foto</th>
                                     <th>Judul Buku</th>
                                     <th>Pengarang</th>
                                     <th>Penerbit</th>
@@ -28,14 +29,27 @@
                             <tbody>
                                 @forelse ($buku as $b)
                                     <tr>
-                                        
+                                        <td>
+                                            <img src="{{ asset('storage/'.$b->foto) }}" alt="Foto Buku" width="100">
+                                        </td>
                                         <td>{{ $b->judul }}</td>
                                         <td>{{ $b->penulis }}</td>
                                         <td>{{ $b->penerbit }}</td>
                                         <td>{{ $b->tahun_terbit }}</td>
-                                        
+<td>
+                                        <form action="{{ route('buku.delete', $b->id) }}" method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger">Hapus <i class="fa-solid fa-trash"></i>                                              
+                                            </button>
+
+                                            <a class="btn btn-primary" href="{{ route('buku.edit', $b->id) }}">Edit
+                                                <i class="fa fa-file-pen"></i></a>
+                                </form>
+                            </td>  
                                     </tr>
-                                @empty
+                              
+                                    @empty
                                     <tr>
                                         <td colspan="6" class="text-center">Tidak ada data buku.</td>
                                     </tr>

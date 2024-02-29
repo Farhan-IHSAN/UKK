@@ -1,10 +1,6 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
+@extends('layouts.perpus')
 
+@section('content')
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
@@ -40,13 +36,19 @@
                                                 <input type="text" name="penerbit" class="w-full border p-2" required>
                                             </div>
 
-                                            <div class="mb-4">
-                                                <label for="tahun_terbit" class="block text-sm font-semibold mb-2">Tahun
-                                                    Terbit:</label>
-                                                <input type="number" name="tahun_terbit" class="w-full border p-2"
-                                                    required>
+                                            <div class="mb-3">
+                                                <label for="tahun_terbit" class="form-label">Tahun Terbit:</label>
+                                                <select name="tahun_terbit" class="form-select custom-select" required>
+                                                    @php
+                                                        $currentYear = date('Y');
+                                                        $startYear = 1900; 
+                                                    @endphp
+                                                    @for($year = $currentYear; $year >= $startYear; $year--)
+                                                        <option value="{{ $year }}">{{ $year }}</option>
+                                                    @endfor
+                                                </select>
                                             </div>
-
+                                            
                                             <div class="mb-4">
                                                 <label for="kategori_id"
                                                     class="block text-sm font-semibold mb-2">Kategori:</label>
@@ -57,7 +59,10 @@
                                                 </select>
                                             </div>
 
-
+                                        <div class="mb-3">
+                                        <tabel for="foto" class="form-label">Foto buku</label>
+                                        <input type="file" name="foto" accept="image/" class="form-control"required> 
+                                        </div>
                                             <button type="submit"
                                                 class="bg-blue-500 text-black border py-2 px-4 rounded">Simpan</button>
                                         </form>
@@ -70,4 +75,4 @@
             </div>
         </div>
     </div>
-</x-app-layout>
+@endsection

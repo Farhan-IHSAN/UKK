@@ -24,6 +24,16 @@
                                 @forelse ($kategori as $k)
                                     <tr>
                                         <td class="px-4 py-2">{{ $k->nama_kategori }}</td>
+                                        <td>
+                                            <form action="{{ route('kategori.hapus', $k->id) }}" method="post">
+                                                @csrf
+                                                @method('DELETE')
+                                            <button type="submit" class="btn btn-danger">Hapus<i class="fa-solid fa-trash"></i>                                              
+                                            </button>
+                                            <a class="btn btn-primary" href="{{ route('kategori.edit', $k->id) }}">Edit
+                                                <i class="fa fa-file-pen"></i></a>
+                                            </form>
+                                        </td>
                                     </tr>
                                 @empty
                                     <tr>

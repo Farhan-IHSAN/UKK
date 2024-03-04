@@ -23,6 +23,7 @@
                                     <th>Pengarang</th>
                                     <th>Penerbit</th>
                                     <th>Tahun Terbit</th>
+                                    <th>Aksi</th>
                                     
                                 </tr>
                             </thead>

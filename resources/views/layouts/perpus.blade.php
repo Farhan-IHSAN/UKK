@@ -105,6 +105,7 @@
                   </g>
                 </svg>
               </span>
+              <a href="/"
               <span class="app-brand-text demo menu-text fw-bold ms-2">IHSAN</span>
             </a>
 

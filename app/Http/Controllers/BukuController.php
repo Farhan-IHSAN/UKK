@@ -23,7 +23,11 @@ class BukuController extends Controller
         $kategori = Kategori::distinct()->get();
         return view('buku.buku_create', compact('kategori'));
     }
-
+    public function hapus($id)
+{
+    Buku::find($id)->delete();
+    return redirect('/buku');
+}
     public function store(Request $request)
     {
         $request->validate([
@@ -99,4 +103,3 @@ class BukuController extends Controller
         return view ('welcome', ['buku' => $buku]);
     }
 }
-
